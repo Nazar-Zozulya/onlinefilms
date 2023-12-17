@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>films</title>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body>
+    <!-- <h1>{{film.name}}</h1><p>{{film.year}}</p>
+    <p>Жанри</p> -->
+    {% for film in films %}
+    <div>
+    <h1>{{film.name}}</h1><p>{{film.year}}</p>
+    <p>Жанри</p>
+        {% for genre in film.genre.all %}
+        <p>{{genre.name}}</p>
+        {% endfor %}
+    <a href="/description/{{film.id}}">читати статтю</a>
+    </div>
+    {% endfor %}
+</body>
+</html>
